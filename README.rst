@@ -79,6 +79,10 @@ The fourth command is ``custom_dump``.  This reads a setting ``CUSTOM_DUMPS``:
             'dependents': [  # These are the attributes/methods of the model that we wish to dump.
                 'current_version',
                 'current_version.files.all.0',
+                {
+                    'primary': 'previous_versions.all',
+                    'dependents': ['files.all']
+                }
             ],
             'order': ('app1.model1', 'app2.model2',),
             'order_cond': {'app1.model1': lambda x: 1 if x.get('fields').get('parent_model1') else 0,
